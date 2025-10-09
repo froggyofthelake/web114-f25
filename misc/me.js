@@ -4,8 +4,8 @@ let favoriteHobby = "Homelab";
 let favoriteFood = "Sandwich";
 let favoriteAnimal = "Frog"
 
-console.log(myName);
-console.log(favoriteColor);
-console.log(favoriteHobby);
-console.log(favoriteFood);
-console.log(favoriteAnimal);
+console.log("Hi, my name is " + myName);
+console.log("My favorite color is " + favoriteColor);
+console.log("My favorite hobby is " + favoriteHobby);
+console.log("My favorite food is " + favoriteFood);
+console.log("My favorite animal is " + favoriteAnimal);
