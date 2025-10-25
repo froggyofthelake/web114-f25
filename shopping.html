@@ -5,9 +5,41 @@
 	<meta charset="utf-8" />
 	<title>Shopping</title>
 	<script>
+		let total = prompt("How much did you spend?");
 
+		let confirmed = false;
+		if (total != null)
+			confirmed = confirm(`${total} total? Click OK to continue!`);
+
+		if (confirmed) {
+			if (total >= 100) alert("20% off");
+			else if (total >= 50) alert("10% off");
+			else alert("No discount.");
+		}
 	</script>
 </head>
 <body>
+	<h2>
+		Jade M Ambrose
+	</h2>
+
+	<br />
+
+	<h3>
+		Name a situation in which you would need to create an "if"
+		statement.
+	</h3>
+	<p>
+		Check if user entered valid data into a form
+	</p>
+
+	<br />
+
+	<h3>
+		When comparing values,  in what data type is the result stored?
+	</h3>
+	<p>
+		Boolean
+	</p>
 </body>
 </html>
