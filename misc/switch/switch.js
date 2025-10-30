@@ -1,5 +1,5 @@
 // Jade M Ambrose
-let favMonth = lower(prompt("What's your favorite month?"));
+let favMonth = prompt("What's your favorite month?").toLowerCase();
 let validMonth = false;
 switch (favMonth) {
 	case "january":
