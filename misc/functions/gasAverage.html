@@ -1,0 +1,62 @@
+﻿<!--
+	Jade M Ambrose
+	14 Nov 2025
+-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Gas Average</title>
+</head>
+<body>
+	<h1>What is the purpose of a function?</h1>
+	<p>
+		To provide modularity in code. Otherwise programs would unnecessarily 
+		repeat the same things many times over.
+	</p>
+
+	<p>Press F12 to see the console messages.</p>
+
+	<!-- Step 1 -->
+	<script>
+		// Step 2
+		let entryCount = 0;
+		let total = 0;
+		let weeklyGas = 0;
+		let username = prompt("What is your name?");
+		weeklyGas = prompt("Enter your first weekly gas total, or -1 to end");
+
+		// Step 4
+		let gas = calcGasAvg();
+
+		// Step 5
+		confirm(username + "'s average weekly gas bill is " + gas.toFixed(2));
+
+		// Step 6
+		if (entryCount == 0) confirm("No gas totals were entered.");
+		else confirm(
+			`You entered ${entryCount} gas total${entryCount > 1 ? `s` : ``}`);
+		// Ternary if statement my beloved
+
+		// Step 3
+		function calcGasAvg() {
+			weeklyGas = parseFloat(weeklyGas);
+			while (weeklyGas != -1 && !isNaN(weeklyGas)) {
+				total += Number(input);		// I hate Javascript
+				entryCount += 1;
+
+				weeklyGas =
+					prompt("Enter another weekly gas total, or -1 to end");
+			}
+
+			let averageGas = 0;
+
+			if (entryCount > 0) averageGas = total / entryCount;
+
+			return averageGas;
+
+		}
+	</script>
+</body>
+</html>
