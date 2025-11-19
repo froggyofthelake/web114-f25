@@ -1,0 +1,64 @@
+<!-- Jade M Ambrose -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Mood Changer</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', sans-serif;
+			text-align: center;
+			padding: 50px;
+			transition: background-color 0.5s ease, color 0.5s ease;
+			min-height: 100vh;
+		}
+
+		h1 {
+			font-size: 3rem;
+			margin-bottom: 20px;
+		}
+
+		#moodButtons {
+			margin: 20px 0;
+		}
+
+		.mood-btn {
+			padding: 12px 20px;
+			margin: 8px;
+			font-size: 1.1rem;
+			cursor: pointer;
+			border: none;
+			border-radius: 8px;
+			transition: transform 0.2s;
+		}
+
+			.mood-btn:hover {
+				transform: scale(1.05);
+			}
+
+		#moodDisplay {
+			margin-top: 30px;
+			font-size: 1.5rem;
+			font-style: italic;
+		}
+	</style>
+</head>
+<body>
+	<h1>How are you feeling?</h1>
+	<p>Click a mood to change the vibe!</p>
+
+	<!-- Button container -->
+	<div id="moodButtons">
+		<button class="mood-btn" data-mood="happy">Happy</button>
+		<button class="mood-btn" data-mood="calm">Calm</button>
+		<button class="mood-btn" data-mood="excited">Excited</button>
+		<button class="mood-btn" data-mood="chill">Chill</button>
+		<button class="mood-btn" data-mood="mysterious">Mysterious</button>
+		<button class="mood-btn" data-mood="reset">Reset</button>
+	</div>
+
+	<p id="moodDisplay">Choose a mood...</p>
+
+	<script src="mood.js"></script>
+</body>
+</html>
