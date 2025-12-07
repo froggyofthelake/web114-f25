@@ -1,0 +1,451 @@
+/*
+	colors
+	game title color #5b4a4f
+	html background #D8E2DC
+	game window background #FAFAFA
+	button border #FAFAFA
+*/
+
+html {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:100vh;
+	width:100vw;
+	background-color: #D8E2DC;
+	user-select: none;
+}
+
+body {
+	display: flex;
+}
+
+#game-title
+{
+	text-align: center;
+	font-family: "Wellsley";
+	color: #2b2326;
+	font-size: 3em;
+	word-spacing: -.2em;
+
+	opacity: 0;
+	transition-duration: .7s;
+}
+
+#game-window {
+	background-color:#FAFAFA;
+	background-image: url("img/paper.jpg");
+	background-size: 350%;
+	background-position: center;
+	width: 640px;
+	height: 480px;
+	border-radius: 60px;
+	box-shadow: 1px 1px 10px #ccc;
+
+	opacity: 0;
+	transition-duration: .7s;
+}
+
+#game-dialogue {
+	box-sizing: border-box;
+	height: 100%;
+	padding: 30px;
+}
+#game-dialogue > * {
+	box-sizing: border-box;
+	height: 50%;
+}
+
+#prompt-text {
+	box-sizing: border-box;
+	text-align: center;
+	margin: 0;
+
+	font-family: "Sophie Comic";
+	font-size: 1.7em;
+	color: #32292c;
+}
+
+#choices {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.choice {
+	height: 35%;
+	width: 100%;
+	font-size: 2.5em;
+	line-height: 80%;
+}
+
+.portrait {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	width: 384px;
+}
+
+#player {
+	align-self: center;
+	opacity: 0;
+	transition-duration: 0.3s;
+}
+
+div:has(#game-window) {
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+#enemy {
+	transition-duration: 0.3s;
+	opacity: 0;
+	align-self: center;
+}
+
+.life-text {
+	margin: .2em;
+	width: 80%;
+	align-self: center;
+	font-family: "Wellsley";
+	transition-duration: 0.2s;
+	opacity: 0;
+}
+
+.hp-bar {
+	height: 1em;
+	background-color: rgb(211, 28, 0);
+	width: 80%;
+	align-self: center;
+	/* border-radius: 11px; */
+	transition-duration: 0.3s;
+	opacity: 0;
+	position: relative;
+}
+.bar {
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: rgb(0, 128, 55);
+	background-blend-mode:difference;
+	/* border-radius: 11px; */
+	transition-duration: 0.3s;
+	transition-timing-function: cubic-bezier(0.5, 0.1, 0.5, 0.9);
+	position :absolute;
+}
+
+#fade {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 3;
+	height: 100vh;
+	width: 100vw;
+	background-color: black;
+	opacity: 0;
+	pointer-events: none;
+}
+
+#newgame-window {
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 4;
+
+	width: 640px;
+	height: 480px;
+	margin: auto;
+
+	transition-duration: 0.2s;
+	opacity: 0;
+
+	pointer-events: none;
+
+	background-color: beige;
+	background-image: url("img/paper.jpg");
+	background-size: 250%;
+	background-position: center;
+	background-blend-mode: lighten;
+	color: #2b2326;
+
+	box-sizing: border-box;
+	border-radius: 40px;
+	padding: 20px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+	#newgame-window>div {
+		position:absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		display: inherit;
+		flex-direction: inherit;
+		align-items: inherit;
+	}
+	#newgame-window h1, h2 {
+		/* font-family: "Sophie Comic"; */
+		margin-top: 0;
+	}
+	#newgame-window h1 {
+		font-size: 3.5em;
+		word-spacing: .05em;
+		letter-spacing: -.05em;
+		margin-bottom: 0;
+	}
+	#newgame-window h2 {
+		font-size: 2.5em;
+		word-spacing: .05em;
+		letter-spacing: -.05em;
+		margin-bottom: 0;
+	}
+	#newgame-window h3 {
+		margin: 0.5em 0;
+	}
+	#newgame-window p {
+		margin-top: .1em;
+		font-family: "Sophie Comic";
+	}
+	#newgame-window input {
+		width: 5em;
+		font-family: inherit;
+		font-size: 2em;
+		text-align: center;
+		/* caret-color: transparent; */
+		
+		background-color:#fafcf8;
+		border: none;
+		align-self: center;
+		
+	}
+		#newgame-window input:focus {
+			/* background-color: #fff; */
+			outline: none;
+		}
+	
+#class-select {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	margin: 1em 0;
+}
+	#class-select>img {
+		width: 128px;
+		padding: 0;
+		margin: 0;
+		transition-duration: .17s;
+		cursor: pointer;
+	}
+	#class-select img:hover {
+		scale: 1.1;
+		/* filter: drop-shadow(0 0 10px yellow); */
+	}
+	#class-select img:active {
+		scale: 1.05;
+		/* filter: drop-shadow(0 0 15px yellow); */
+	}
+
+#class-name {
+	font-size: 2em;
+	margin-bottom:-.2em;
+}
+#class-flavor {
+	font-size: 1.6em;
+}
+
+.selected {
+	scale: 1.08;
+	/* filter:drop-shadow(0 0 10px yellow); */
+}
+
+#page1 {
+	box-sizing: border-box;
+	opacity: 1;
+	pointer-events: all;
+	padding:3%;
+}
+#page2 {
+	opacity: 0;
+	pointer-events: none;
+	flex-direction: inherit;
+	justify-content: center;
+	align-items: inherit;
+}
+	#page2 button {
+		font-family: inherit;
+		font-size: 1em;
+		padding: 5px 15px;
+	}
+
+.btn {
+		border-radius: 20px;
+		border: 0;
+		background-color: #D8E2DC;
+		transition-duration: 0.06s;
+		box-shadow: 1px 1px 3px #888;
+		cursor: pointer;
+}
+	.btn:hover {
+		background-color: #ccd5d0;
+	}
+	.btn:active {
+		background-color: #bac8c0;
+		box-shadow: 1px 1px 3px #888 inset;
+	}
+	#validate {
+		font-size: 1em;
+		height: 1em;
+	}
+	#randbtn {
+		transition-duration: 0.1s;
+		justify-self: flex-start;
+		cursor: pointer;
+	}
+	#randbtn:hover {
+		scale:110%;
+	}
+	#randbtn:active {
+		scale:95%;
+	}
+#page3 {
+	opacity: 0;
+	pointer-events: none;
+	justify-content: center;
+	flex-direction: row;
+}
+#page3>div {
+	width: 90%;
+	display: flex;
+	justify-content: center;
+}
+
+	#page3 button {
+		width: fit-content;
+		font-size: 1em;
+		padding: 5px 15px;
+	}
+
+#page2, #page3 {
+	display: inherit;
+
+	font-family: "Sophie Comic";
+	font-size: 2.7em;
+}
+
+#endgame-window {
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 4;
+
+	width: 640px;
+	height: 480px;
+	margin: auto;
+
+	transition-duration: 0.2s;
+	opacity: 0;
+
+	pointer-events: none;
+
+	background-color: beige;
+	background-image: url("img/paper.jpg");
+	background-size: 250%;
+	background-position: center;
+	background-blend-mode: lighten;
+	color: #2b2326;
+
+	box-sizing: border-box;
+	border-radius: 40px;
+	padding: 20px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	font-size:1.5em;
+	text-align: center;
+}
+	#endgame-window h1 {
+		line-height: 0.9em;
+		height: 70%;
+	}
+	#endgame-window button {
+		font-size: 1.7em;
+		padding: 5px 15px;
+	}
+
+.sophiecomic {
+	font-family: "Sophie Comic";
+	word-spacing: .05em;
+	letter-spacing: -.05em;
+}
+
+.windowFadeIn-anim {
+	animation: windowFadeIn 0.2s;
+	animation-play-state: paused;
+}
+
+.windowFadeOut-anim {
+	animation: windowFadeOut 0.2s;
+	animation-play-state: paused;
+}
+
+@keyframes windowFadeIn {
+	0%		{
+			scale: 130%;
+			}
+	100%	{
+			scale: 100%;
+			}
+}
+@keyframes windowFadeOut {
+	0%		{
+			scale: 100%;
+			}
+	100%	{
+			scale: 130%;
+			}
+}
+
+.windowPop-anim {
+	animation-name: windowPop;
+	animation-duration: 0.3s;
+	animation-play-state: paused;
+}
+
+@keyframes windowPop {
+	0%		{scale: 96%;}
+	50%		{scale: 104%;}
+	100%	{scale: 100%;}
+}
+
+.takeDamage-anim {
+	animation-name: takeDamage;
+	animation-duration: .3s;
+	animation-timing-function: ease-out;
+	animation-play-state: paused;
+	animation-iteration-count:1;
+}
+
+@keyframes takeDamage {
+	0%		{
+				scale: 100%;
+				rotate: 0;
+			}
+	20% 	{
+				scale: 90%;
+				rotate: 2deg;
+			}
+	100% 	{
+				scale: 100%;
+				rotate: 0;
+			}
+}

@@ -1,0 +1,92 @@
+<!--
+Jade M Ambrose
+Final Project - Bunny Game
+-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Bunny Adventure</title>
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="fonts.css" />
+</head>
+<body>
+	<div id="newgame-window">
+		<div id="page1">
+			<h1 class="sophiecomic">This is the tale of a bunny.</h1>
+			<h2 class="sophiecomic">What kind of bunny are you?</h2>
+			<div id="class-select">
+				<img src="img/rex_final.png" id="char0" onclick="SelectChar(0)">	<!-- Rex -->
+				<img src="img/holland_final.png" id="char1" onclick="SelectChar(1)">	<!-- Lop -->
+				<img src="img/lionhead_final.png" id="char2" onclick="SelectChar(2)">	<!-- Lionhead -->
+				<img src="img/netherland_final.png" id="char3" onclick="SelectChar(3)">	<!-- Dwarf -->
+			</div>
+			<p id="class-name"></p>
+			<p id="class-flavor"></p>
+		</div>
+
+		<div id="page2" class="sophiecomic">
+			<h3>Every bunny needs a name.<br>What's yours?</h3>
+			<div>
+				<img src="img/dice-icon.png" onclick="RandomName()" id="randbtn" height="48px">
+				<input type="text" maxlength="8" autocomplete="off">
+			</div>
+			<h3 id="validate"></h3>
+			<div>
+				<button onclick="PreviousPage()" class="backbutton sophiecomic btn">Go Back</button>
+				<button onclick="ConfirmName()" class="btn">Next</button>
+			</div>
+		</div>
+
+		<div id="page3">
+			<h3>The sun is rising, little one.<br><br>How will you spend your day?</h3>
+			<div>
+				<button onclick="BeginNewGame()" id="confirm" class="sophiecomic btn">Good morning!</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="endgame-window" class="sophiecomic">
+		<h1 id="endgame-message"></h1>
+		<button onclick="ResetGame()" class="sophiecomic btn">Play again?</button>
+	</div>
+
+	<div id="fade"></div>
+	<div class="portrait">	<!-- Left section -->
+		<img src="img/cat_maybe_final.png" id="enemy" width="320px">
+		<h2 class="life-text">Life</h2>
+		<div class="hp-bar">
+			<div class="bar" id="enemy-hp"></div>
+		</div>
+	</div>
+	<div>	<!-- Middle section -->
+		<header>
+			<h1 id="game-title">The Legend of <span id="player-name">Bunny</span></h1>
+			<!-- Debug buttons -->
+			<!-- <button onclick="Choose(90)">Test</button> -->
+			<!-- <button onclick="HpBars(0)">0</button> -->
+			<!-- <button onclick="HpBars(1)">1</button> -->
+		</header>
+		
+		<div id="game-window">
+			<div id="game-dialogue">
+				<h2 id="prompt-text">Prompt Text</h2>
+				<div id="choices">
+					<button id="choice1" class="choice sophiecomic btn" onclick="Choose()">Choice 1</button>
+					<button id="choice2" class="choice sophiecomic btn " onclick="Choose()">Choice 2</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="portrait">	<!-- Right section -->
+		<img src="img/EVIL_BUNNY.png" id="player" width="256px">
+		<h2 class="life-text">Life</h2>
+		<div class="hp-bar">
+			<div class="bar" id="player-hp"></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

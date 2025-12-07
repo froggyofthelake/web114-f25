@@ -1,0 +1,27 @@
+@font-face {
+	font-family: "Wellsley";
+	font-style: normal;
+	font-weight: normal;
+	src: url("font/wellsley.ttf");
+}
+
+@font-face {
+	font-family: "Romantika";
+	font-style: normal;
+	font-weight: normal;
+	src: url("font/Romantika.ttf");
+}
+
+@font-face {
+	font-family: "Wonderia";
+	font-style: normal;
+	font-weight: normal;
+	src: url("font/Wonderia.otf");
+}
+
+@font-face {
+	font-family: "Sophie Comic";
+	font-style: normal;
+	font-weight: normal;
+	src: url("font/Sophiecomic.ttf");
+}
