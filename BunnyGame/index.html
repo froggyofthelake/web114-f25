@@ -8,6 +8,7 @@ Final Project - Bunny Game
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Bunny Adventure</title>
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="fonts.css" />
@@ -50,7 +51,26 @@ Final Project - Bunny Game
 
 	<div id="endgame-window" class="sophiecomic">
 		<h1 id="endgame-message"></h1>
-		<button onclick="ResetGame()" class="sophiecomic btn">Play again?</button>
+		<div>
+			<button onclick="ToggleCredits()" id="credits-btn" class="sophiecomic btn">Credits</button>
+			<button onclick="ResetGame()" class="sophiecomic btn">Play again?</button>
+		</div>
+	</div>
+
+	<div id="credits-window" class="sophiecomic">
+		<div>
+			<h1>Credits</h1>
+			
+			<h2>froggyofthelake</h2>
+			<h3>Story, programming</h3>
+
+			<h2>bunbrosius</h2>
+			<h3>art, kissies</h3>
+
+			<h2>Dumpling</h2>
+			<h3>cute bunny</h3>
+		</div>
+		<!-- <button onclick="HideCredits()" class="sophiecomic btn">OK</button> -->
 	</div>
 
 	<div id="fade"></div>

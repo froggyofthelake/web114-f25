@@ -344,7 +344,7 @@ div:has(#game-window) {
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 4;
+	z-index: 5;
 
 	width: 640px;
 	height: 480px;
@@ -382,6 +382,62 @@ div:has(#game-window) {
 		padding: 5px 15px;
 	}
 
+#credits-window {
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 4;
+
+	width: 260px;
+	height: 480px;
+	margin: auto;
+
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+	transition-property: transform;
+	opacity: 0;
+
+	pointer-events: none;
+
+	background-color: beige;
+	background-image: url("img/paper.jpg");
+	background-size: 300%;
+	background-position: center;
+	background-blend-mode: lighten;
+	color: #2b2326;
+
+	box-sizing: border-box;
+	border-radius: 40px;
+	padding: 20px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	font-size:1.5em;
+	text-align: center;
+}
+	#credits-window div {
+
+	}
+	#credits-window h1 {
+		line-height: 10%;
+	}
+	#credits-window h2 {
+		margin-bottom: 0;
+	}
+	#credits-window h3 {
+		margin-top: 0;
+	}
+	#credits-window button {
+		font-size: 1.5em;
+		padding: 2px 20px;
+	}
+.credits-shown {
+	transform: translateX(-455px);
+}
 .sophiecomic {
 	font-family: "Sophie Comic";
 	word-spacing: .05em;

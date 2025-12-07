@@ -83,10 +83,13 @@ let enemyHpBar = document.getElementById("enemy-hp");
 let endGameWindow = document.getElementById("endgame-window");
 let endGameMessage = document.getElementById("endgame-message");
 
+let creditsWindow = document.getElementById("credits-window");
+
 let playerName = "";
 let newGamePageNum = 1;
 let selectedChar = -1;
 let currentChoice = 0;
+let creditsShown = false;
 
 let playerHp = 100;
 let enemyHp = 100;
@@ -694,6 +697,7 @@ function ShowNewGame() {
 }
 
 function BeginNewGame() {
+	if (creditsShown) ToggleCredits();
 	Choose(1);
 
 	playerHp = 100;
@@ -844,6 +848,7 @@ function ShowEndGame(id = 0) {
 	SetEndGameMsg(id);
 
 	endGameWindow.style.opacity = 1;
+	creditsWindow.style.opacity = 1;
 	fade.style.opacity = 0.6;
 
 	endGameWindow.style.pointerEvents = "all";
@@ -853,6 +858,7 @@ function ShowEndGame(id = 0) {
 function HideEndGame() {
 	endGameWindow.style.opacity = 0;
 	fade.style.opacity = 0;
+	creditsWindow.style.opacity = 0;
 
 	endGameWindow.style.pointerEvents = "none";
 	fade.style.pointerEvents = "none";
@@ -860,6 +866,19 @@ function HideEndGame() {
 
 function SetEndGameMsg(id = 0) {
 	endGameMessage.innerHTML = endings[id + 1];
+}
+
+function ToggleCredits() {
+	if (creditsShown) {
+		document.getElementById("credits-btn").innerHTML = "Credits";
+		creditsWindow.classList.remove("credits-shown");
+		creditsShown = false;
+	}
+	else {
+		document.getElementById("credits-btn").innerHTML = "Close";
+		creditsWindow.classList.add("credits-shown");
+		creditsShown = true;
+	}
 }
 
 function ResetGame() {
@@ -874,6 +893,7 @@ function ResetGame() {
 	NewGamePage(1);
 	
 	HideEndGame();
+	if (creditsShown) ToggleCredits();
 	
 	ShowNewGame();
 }
