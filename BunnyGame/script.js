@@ -11,7 +11,7 @@ const DWARF = 3;
 const classInfo = {
 	0 : [
 			"Rex",
-			"A medium sized rabbit with a calm temper. Typically weighs between 7.5 10.5 pounds and can jump up to 3 feet."
+			"A medium sized rabbit with a calm temper. Typically weighs between 7.5 and 10.5 pounds and can jump up to 3 feet."
 		],
 	1 : [
 			"Holland Lop", 
@@ -62,6 +62,7 @@ let fade = document.getElementById("fade");
 let newGameWindow = document.getElementById("newgame-window");
 
 let nameInput = document.querySelector("#page2 input");
+let validateMsg = document.getElementById("validate");
 
 let playerNameElement = document.getElementById("player-name");
 let playerPortrait = document.getElementById("player");
@@ -134,9 +135,9 @@ const randomNames = [
 	"Pumpkin",
 ];
 
-const knownNames = {
-	"dumpling" : "A very special bunny indeed...",
-}
+const knownNames = [
+	"dumpling",
+]
 
 // This is horrifying
 // This var is in the format:
@@ -187,7 +188,7 @@ const paths = {
 	7 : [
 		"Nibble on hay",
 			"Hay is delicious!! You enjoy nibbling on it throughout the day, though you wish you had something more to eat right now.",
-		0, -1	// COME BACK TO THIS?
+		8, -1
 	],
 	8 : [
 		"Pray to the gods for food",
@@ -281,11 +282,10 @@ const paths = {
 			"It doesn't seem that tall...",
 		19, -1
 	],
-	22 : [			// FIX THIS
+	22 : [
 		"Maybe the Wall isn't meant to be crossed by little bunnies...",
-			"You think about the great Wall that separates your land from from that of the gods. " +
-			"Is it really as impenetrable as it seems?\n\n" +
-			"It doesn't seem that tall...",
+			"You wander away. Whatever is on the other side isn't meant for you. " +
+			"You're just a small bunny in a big world. You have more important things to do than to wonder about the other side.",
 		14, -1
 	],
 	23 : [
@@ -441,6 +441,15 @@ const paths = {
 	],
 };
 
+// This was for testing! I may forget to remove it.
+
+// let longest = "";
+// for (const [key, value] of Object.entries(paths)) {
+// 	console.log()
+// 	if (value[CHOICE_FLAVOR].length > longest.length) longest = value[CHOICE_FLAVOR];
+// }
+// console.log(longest);
+
 function RollDice(sides = 20, min = 1) {
 	if (sides > 1 && min >= 1)
 		return Math.floor(Math.random() * (sides - min + 1)) + min;
@@ -499,15 +508,15 @@ function Choose(c = 0) {
 			SetPlayerHpBar();
 			SetEnemyHpBar();
 			break;
-		case (24):		// TODO make cat and hp bars disappear
+		case (24):			// Flee
 				HideEnemy();
 				HpBars(0);
 			break;
-		case 26:
+		case (26):			// Start combat
 			HpBars(1);
 			break;
 
-		case (31):
+		case (31):		// Fight loss pt 2
 			HideEnemy();
 			HpBars(0);
 			break;
@@ -527,7 +536,7 @@ function Choose(c = 0) {
 			Combat(1);
 			break;
 
-		case (200):
+		case (200):		// Win screens
 		case (201):
 		case (202):
 		case (203):
@@ -753,16 +762,6 @@ function PreviousPage() {
 }
 
 function SelectChar(id = 0) {
-	// if (selectedChar == id) {
-	// 	classPortraits[selectedChar].classList.remove("selected");
-	// 	selectedChar = -1;
-	// }
-	// else {
-	// 	if (selectedChar != -1)
-	// 		classPortraits[selectedChar].classList.remove("selected");
-	// 	selectedChar = id;
-	// 	classPortraits[selectedChar].classList.add("selected");
-	// }
 	selectedChar = id;
 	ValidateMessage("");
 	NewGamePage(2);
@@ -771,7 +770,9 @@ function SelectChar(id = 0) {
 function RandomName() {
 	let name_id = Math.floor(Math.random() * (randomNames.length));
 	if (nameInput.value == randomNames[name_id]) RandomName();
-	else nameInput.value = randomNames[name_id];
+	else {
+		nameInput.value = randomNames[name_id];
+	}
 }
 
 function ValidateName() {
@@ -794,13 +795,28 @@ function ValidateName() {
 }
 
 function ValidateMessage(text = "", error = false) {
-	let validate = document.getElementById("validate");
-	validate.innerHTML = text;
+	validateMsg.innerHTML = text;
+	if (error) {
+		validateMsg.style.color = "#900";
+		validateMsg.classList.add("error-anim");
+		validateMsg.style.animationPlayState = "running";
+	}
+	else
+		validateMsg.style.color = "initial";
 }
+
+validateMsg.addEventListener("animationend", (event) => {
+	validateMsg.classList.remove("error-anim");
+});
 
 function ConfirmName() {
 	if (ValidateName()) {
 		playerName = nameInput.value;
+		knownNames.forEach(function(name) {	// easter egg o:
+			if (NormalizeString(playerName) == name) {
+				document.getElementById("secret-name").innerHTML = "special";
+			}
+		});
 		NewGamePage(3);
 	}
 }
@@ -847,18 +863,33 @@ newGameWindow.addEventListener("animationend", (event) => {
 function ShowEndGame(id = 0) {
 	SetEndGameMsg(id);
 
+	endGameWindow.classList.add("windowFadeIn-anim");
+	endGameWindow.style.animationPlayState = "running";
+
 	endGameWindow.style.opacity = 1;
-	creditsWindow.style.opacity = 1;
+	//creditsWindow.style.opacity = 1;
 	fade.style.opacity = 0.6;
 
 	endGameWindow.style.pointerEvents = "all";
 	fade.style.pointerEvents = "all";
 }
 
+endGameWindow.addEventListener("animationend", (event) => {
+	if (endGameWindow.classList.contains("windowFadeIn-anim")) {
+		creditsWindow.style.opacity = 1;
+		creditsWindow.style.transitionDuration = "0.2s";
+		endGameWindow.classList.remove("windowFadeIn-anim");
+	}
+	if (endGameWindow.classList.contains("windowFadeOut-anim"))
+		creditsWindow.classList.remove("windowFadeOut-anim");
+});
+
+
 function HideEndGame() {
+	creditsWindow.style.transitionDuration = "0";
+	creditsWindow.style.opacity = 0;
 	endGameWindow.style.opacity = 0;
 	fade.style.opacity = 0;
-	creditsWindow.style.opacity = 0;
 
 	endGameWindow.style.pointerEvents = "none";
 	fade.style.pointerEvents = "none";

@@ -39,7 +39,7 @@ body {
 	background-position: center;
 	width: 640px;
 	height: 480px;
-	border-radius: 60px;
+	border-radius: 40px;
 	box-shadow: 1px 1px 10px #ccc;
 
 	opacity: 0;
@@ -61,8 +61,7 @@ body {
 	text-align: center;
 	margin: 0;
 
-	font-family: "Sophie Comic";
-	font-size: 1.7em;
+	font-size: 2em;
 	color: #32292c;
 }
 
@@ -117,7 +116,6 @@ div:has(#game-window) {
 	background-color: rgb(211, 28, 0);
 	width: 80%;
 	align-self: center;
-	/* border-radius: 11px; */
 	transition-duration: 0.3s;
 	opacity: 0;
 	position: relative;
@@ -128,7 +126,6 @@ div:has(#game-window) {
 	left: 0;
 	background-color: rgb(0, 128, 55);
 	background-blend-mode:difference;
-	/* border-radius: 11px; */
 	transition-duration: 0.3s;
 	transition-timing-function: cubic-bezier(0.5, 0.1, 0.5, 0.9);
 	position :absolute;
@@ -190,7 +187,6 @@ div:has(#game-window) {
 		align-items: inherit;
 	}
 	#newgame-window h1, h2 {
-		/* font-family: "Sophie Comic"; */
 		margin-top: 0;
 	}
 	#newgame-window h1 {
@@ -205,19 +201,19 @@ div:has(#game-window) {
 		letter-spacing: -.05em;
 		margin-bottom: 0;
 	}
-	#newgame-window h3 {
+	#newgame-window h3:not(#validate) {
 		margin: 0.5em 0;
 	}
 	#newgame-window p {
 		margin-top: .1em;
-		font-family: "Sophie Comic";
 	}
 	#newgame-window input {
-		width: 5em;
+		width: 70%;
+		margin-left: 1.7%;
+		margin-right: 11.6%;
 		font-family: inherit;
 		font-size: 2em;
 		text-align: center;
-		/* caret-color: transparent; */
 		
 		background-color:#fafcf8;
 		border: none;
@@ -252,11 +248,11 @@ div:has(#game-window) {
 	}
 
 #class-name {
-	font-size: 2em;
+	font-size: 2.4em;
 	margin-bottom:-.2em;
 }
 #class-flavor {
-	font-size: 1.6em;
+	font-size: 1.9em;
 }
 
 .selected {
@@ -281,6 +277,7 @@ div:has(#game-window) {
 		font-family: inherit;
 		font-size: 1em;
 		padding: 5px 15px;
+		width: 4.1em;
 	}
 
 .btn {
@@ -301,10 +298,17 @@ div:has(#game-window) {
 	#validate {
 		font-size: 1em;
 		height: 1em;
+		margin: 0.7em 0;
 	}
+		#validate + div {
+			display: flex;
+			justify-content: space-between;
+			width: 90%;
+			margin-left: 5%;
+			margin-right: 5%;
+		}
 	#randbtn {
 		transition-duration: 0.1s;
-		justify-self: flex-start;
 		cursor: pointer;
 	}
 	#randbtn:hover {
@@ -316,15 +320,8 @@ div:has(#game-window) {
 #page3 {
 	opacity: 0;
 	pointer-events: none;
-	justify-content: center;
-	flex-direction: row;
+	justify-content: space-evenly;
 }
-#page3>div {
-	width: 90%;
-	display: flex;
-	justify-content: center;
-}
-
 	#page3 button {
 		width: fit-content;
 		font-size: 1em;
@@ -334,7 +331,6 @@ div:has(#game-window) {
 #page2, #page3 {
 	display: inherit;
 
-	font-family: "Sophie Comic";
 	font-size: 2.7em;
 }
 
@@ -380,6 +376,14 @@ div:has(#game-window) {
 	#endgame-window button {
 		font-size: 1.7em;
 		padding: 5px 15px;
+		width: 4.1em;
+	}
+	#endgame-message+div {
+		display: flex;
+		width: 93%;
+		margin-left: 3%;
+		margin-right: auto;
+		justify-content: space-between;
 	}
 
 #credits-window {
@@ -393,10 +397,7 @@ div:has(#game-window) {
 	width: 260px;
 	height: 480px;
 	margin: auto;
-
-	transition-duration: 0.15s;
-	transition-timing-function: ease-in-out;
-	transition-property: transform;
+	
 	opacity: 0;
 
 	pointer-events: none;
@@ -414,9 +415,10 @@ div:has(#game-window) {
 
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 
-	font-size:1.5em;
+	font-size: 1.65em;
 	text-align: center;
 }
 	#credits-window div {
@@ -473,7 +475,7 @@ div:has(#game-window) {
 
 .windowPop-anim {
 	animation-name: windowPop;
-	animation-duration: 0.3s;
+	animation-duration: 0.2s;
 	animation-play-state: paused;
 }
 
@@ -483,9 +485,35 @@ div:has(#game-window) {
 	100%	{scale: 100%;}
 }
 
+.error-anim {
+	animation: error 0.3s;
+}
+
+@keyframes error {
+	0%		{
+				scale: 100%;
+				rotate: 0;
+			}
+	20% 	{
+				scale: 90%;
+				rotate: 2deg;
+			}
+	30%		{
+				scale: 89%;
+			}
+	40% 	{
+				scale: 90%;
+				rotate: -2deg;
+			}
+	100% 	{
+				scale: 100%;
+				rotate: 0;
+			}
+}
+
 .takeDamage-anim {
 	animation-name: takeDamage;
-	animation-duration: .3s;
+	animation-duration: 0.3s;
 	animation-timing-function: ease-out;
 	animation-play-state: paused;
 	animation-iteration-count:1;
