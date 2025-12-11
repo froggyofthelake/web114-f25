@@ -1,6 +1,6 @@
 <!--
-Jade M Ambrose
-Final Project - Bunny Game
+	Jade M Ambrose
+	WEB 114 Final Project
 -->
 
 <!DOCTYPE html>
@@ -14,12 +14,14 @@ Final Project - Bunny Game
 	<link rel="stylesheet" href="fonts.css" />
 </head>
 <body>
+	<!-- "New game" screen -->
 	<div id="newgame-window">
+		<!-- Page 1 of new game screen -->
 		<div id="page1">
 			<h1 class="sophiecomic">This is the tale of a bunny.</h1>
 			<h2 class="sophiecomic">What kind of bunny are you?</h2>
 			<div id="class-select">
-				<img src="img/rex_final.png" id="char0" onclick="SelectChar(0)">	<!-- Rex -->
+				<img src="img/rex_final.png" id="char0" onclick="SelectChar(0)">		<!-- Rex -->
 				<img src="img/holland_final.png" id="char1" onclick="SelectChar(1)">	<!-- Lop -->
 				<img src="img/lionhead_final.png" id="char2" onclick="SelectChar(2)">	<!-- Lionhead -->
 				<img src="img/netherland_final.png" id="char3" onclick="SelectChar(3)">	<!-- Dwarf -->
@@ -28,11 +30,12 @@ Final Project - Bunny Game
 			<p id="class-flavor" class="sophiecomic"></p>
 		</div>
 
+		<!-- Page 2 -->
 		<div id="page2" class="sophiecomic">
 			<h3>Every bunny needs a name.<br>What's yours?</h3>
 			<div>
 				<img src="img/dice-icon.png" onclick="RandomName()" id="randbtn" height="48px">
-				<input type="text" maxlength="8" autocomplete="off">
+				<input type="text" id="name-input" maxlength="8" autocomplete="off">
 			</div>
 			<h3 id="validate"></h3>
 			<div>
@@ -41,12 +44,14 @@ Final Project - Bunny Game
 			</div>
 		</div>
 
+		<!-- Page 3 -->
 		<div id="page3" class="sophiecomic">
 			<h3>The sun is rising, <span id="secret-name">little</span> one.<br><br>How will you spend your day?</h3>
 			<button onclick="BeginNewGame()" id="confirm" class="sophiecomic btn">Good morning!</button>
 		</div>
 	</div>
 
+	<!-- "You beat the game!" -->
 	<div id="endgame-window" class="sophiecomic">
 		<h1 id="endgame-message"></h1>
 		<div>
@@ -55,6 +60,7 @@ Final Project - Bunny Game
 		</div>
 	</div>
 
+	<!-- Credits screen slides out next to the end window -->
 	<div id="credits-window" class="sophiecomic">
 		<div>
 			<h1>Credits</h1>
@@ -70,23 +76,23 @@ Final Project - Bunny Game
 		</div>
 	</div>
 
+	<!-- Darken the background around the popup windows -->
 	<div id="fade"></div>
-	<div class="portrait">	<!-- Left section -->
+
+	<div class="portrait">	<!-- Left section - enemy portrait and HP bar -->
 		<img src="img/cat_maybe_final.png" id="enemy" width="320px">
 		<h2 class="life-text">Life</h2>
 		<div class="hp-bar">
 			<div class="bar" id="enemy-hp"></div>
 		</div>
 	</div>
-	<div>	<!-- Middle section -->
+	<div>	<!-- Middle section - main game window -->
 		<header>
+			<!-- Don't ask me why I did it like this... -->
 			<h1 id="game-title">The Legend of <span id="player-name">Bunny</span></h1>
-			<!-- Debug buttons -->
-			<!-- <button onclick="Choose(90)">Test</button> -->
-			<!-- <button onclick="HpBars(0)">0</button> -->
-			<!-- <button onclick="HpBars(1)">1</button> -->
 		</header>
 		
+		<!-- Main game window, containing story text and choice buttons -->
 		<div id="game-window">
 			<div id="game-dialogue">
 				<h2 id="prompt-text" class="sophiecomic">Prompt Text</h2>
@@ -97,7 +103,7 @@ Final Project - Bunny Game
 			</div>
 		</div>
 	</div>
-	<div class="portrait">	<!-- Right section -->
+	<div class="portrait">	<!-- Right section - player portrait and HP bar -->
 		<img src="img/EVIL_BUNNY.png" id="player" width="256px">
 		<h2 class="life-text">Life</h2>
 		<div class="hp-bar">
